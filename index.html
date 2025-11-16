@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LuxForm | Premium Furniture</title>
+    <title>ABC | Premium Furniture</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -65,41 +65,28 @@
             letter-spacing: 1px;
             position: relative;
             overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--accent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
         }
 
         .btn:hover {
-            background-color: var(--accent);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
-
-        .btn:hover::after {
-            animation: ripple 1s ease-out;
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(20, 20);
-                opacity: 0;
-            }
         }
 
         section {
@@ -145,6 +132,11 @@
             top: 0;
             z-index: 1000;
             transition: var(--transition);
+            transform: translateY(0);
+        }
+
+        header.hidden {
+            transform: translateY(-100%);
         }
 
         header.scrolled {
@@ -165,6 +157,7 @@
             font-weight: 700;
             color: var(--primary);
             position: relative;
+            overflow: hidden;
         }
 
         .logo span {
@@ -188,16 +181,19 @@
 
         .nav-links {
             display: flex;
+            align-items: center;
+            gap: 30px;
         }
 
         .nav-links li {
-            margin-left: 30px;
+            display: inline-block;
         }
 
         .nav-links a {
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            padding: 8px 0;
         }
 
         .nav-links a:hover {
@@ -207,7 +203,7 @@
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
@@ -217,6 +213,11 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .nav-links .btn {
+            margin-left: 0;
+            padding: 10px 25px;
         }
 
         .hamburger {
@@ -711,6 +712,66 @@
             opacity: 0.7;
         }
 
+        /* Parallax Scrolling Effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(52, 152, 219, 0.3);
+            border-top: 5px solid var(--secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Text Animation */
+        .animated-text {
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .animated-text span {
+            display: inline-block;
+            transform: translateY(100%);
+            animation: textReveal 0.5s forwards;
+        }
+
+        @keyframes textReveal {
+            to {
+                transform: translateY(0);
+            }
+        }
+
         /* Responsive Styles */
         @media (max-width: 992px) {
             .hero h1 {
@@ -744,14 +805,11 @@
                 padding-top: 50px;
                 transition: var(--transition);
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                gap: 20px;
             }
 
             .nav-links.active {
                 left: 0;
-            }
-
-            .nav-links li {
-                margin: 15px 0;
             }
 
             .hamburger {
@@ -779,11 +837,16 @@
     </style>
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <!-- Header -->
     <header id="header">
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Lux<span>Form</span></a>
+                <a href="#" class="logo">ABC <span>Furniture</span></a>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#collections">Collections</a></li>
@@ -923,7 +986,7 @@
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>Email Us</h4>
-                                <p>info@luxform.com</p>
+                                <p>info@abc.com</p>
                             </div>
                         </div>
                     </div>
@@ -954,7 +1017,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>LuxForm</h3>
+                    <h3>ABC Furniture</h3>
                     <p>Creating beautiful spaces with premium furniture since 2010. We're dedicated to quality craftsmanship and customer satisfaction.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -986,17 +1049,25 @@
                     <ul>
                         <li><i class="fas fa-map-marker-alt"></i> 123 Furniture St, Design District</li>
                         <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@luxform.com</li>
+                        <li><i class="fas fa-envelope"></i> info@abc.com</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 LuxForm. All Rights Reserved.</p>
+                <p>&copy; 2023 Promocraft. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Loading Animation
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
+        });
+
         // Mobile Menu Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -1013,13 +1084,25 @@
         });
 
         // Header scroll effect
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
+            
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
         });
 
         // Smooth scrolling for anchor links
@@ -1063,6 +1146,19 @@
 
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+
+        // Text animation
+        const animatedTexts = document.querySelectorAll('.animated-text');
+        animatedTexts.forEach(text => {
+            const letters = text.textContent.split('');
+            text.innerHTML = '';
+            letters.forEach((letter, index) => {
+                const span = document.createElement('span');
+                span.textContent = letter;
+                span.style.animationDelay = `${index * 0.1}s`;
+                text.appendChild(span);
+            });
+        });
     </script>
 </body>
 </html>
