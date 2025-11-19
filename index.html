@@ -6,6 +6,8 @@
     <title>Wox Sofa Studio | Custom Compressed Furniture</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <style>
         :root {
             --primary: #2c3e50;
@@ -750,6 +752,68 @@
             resize: vertical;
         }
 
+        /* Modern Select Box */
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            background: white;
+            font-size: 16px;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+
+            /* Remove default arrow */
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+
+            /* Custom arrow */
+            background-image: url("data:image/svg+xml;utf8,<svg fill='%232c3e50' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+        }
+
+        /* Hover + Focus effect */
+        .form-group select:hover {
+            border-color: var(--secondary);
+        }
+
+        .form-group select:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        /* Status Message */
+        .status-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .status-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status-message.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
         /* Footer */
         footer {
             background-color: var(--dark);
@@ -998,7 +1062,7 @@
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1>Custom Compressed Furniture by Wox</h1>
+                <h1>Custom <br>Compressed <br>Furniture by <br> Wox</h1>
                 <p>Transform your living space with our innovative compressed furniture solutions. Smart design meets functionality with complete customization.</p>
                 <a href="#products" class="btn">Explore Products</a>
             </div>
@@ -1063,7 +1127,7 @@
                         <h3>Transform Sofa</h3>
                         <p>Compresses to 1/3 of its size for storage. Expands to a comfortable 3-seater sofa in seconds. Customize size, fabric, and color.</p>
                         <div class="product-price">
-                            <span class="price">From $799</span>
+                            <span class="price">From ₹22500</span>
                             <a href="#contact" class="btn">Customize</a>
                         </div>
                     </div>
@@ -1087,7 +1151,7 @@
                         <h3>Wall Bed Pro</h3>
                         <p>Folds vertically against the wall. Queen-size comfort with integrated storage solutions. Customize size and materials.</p>
                         <div class="product-price">
-                            <span class="price">From $1,299</span>
+                            <span class="price">From ₹14499</span>
                             <a href="#contact" class="btn">Customize</a>
                         </div>
                     </div>
@@ -1186,21 +1250,21 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h4>Visit Our Studio</h4>
-                                <p>123 Innovation Drive, Tech District</p>
+                                <p>Eliyaparamb, Kavanoor - Areekode Road <br>Malappuram</p>
                             </div>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-phone"></i>
                             <div>
                                 <h4>Call Us</h4>
-                                <p>+1 (555) 123-4567</p>
+                                <p>+91 9747393339</p>
                             </div>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>Email Us</h4>
-                                <p>custom@woxsofa.com</p>
+                                <p>woxsofastudio@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -1208,16 +1272,16 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Your Phone">
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your Phone">
                         </div>
                         <div class="form-group">
-                            <select class="form-control">
+                            <select class="form-control" id="service" name="service">
                                 <option value="">Select Product Interest</option>
                                 <option value="sofa">Transform Sofa</option>
                                 <option value="table">Expand Table</option>
@@ -1226,9 +1290,10 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Tell us about your customization needs" required></textarea>
+                            <textarea class="form-control" id="message" name="message" placeholder="Tell us about your customization needs" required></textarea>
                         </div>
-                        <button type="submit" class="btn" style="width: 100%;">Get Free Consultation</button>
+                        <button type="submit" class="btn" id="submitBtn" style="width: 100%;">Get Free Consultation</button>
+                        <div id="statusMsg" class="status-message"></div>
                     </form>
                 </div>
             </div>
@@ -1244,7 +1309,7 @@
                     <p>Creating innovative compressed furniture solutions for modern urban living since 2015. We're dedicated to maximizing your space with customizable furniture that doesn't compromise on comfort or style.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/woxsofa/"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
@@ -1270,9 +1335,9 @@
                 <div class="footer-col">
                     <h3>Contact Info</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Innovation Drive, Tech District</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> custom@woxsofa.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Eliyaparamb, Areekode <br>Malappuram</li>
+                        <li><i class="fas fa-phone"></i> +91 9747393339</li>
+                        <li><i class="fas fa-envelope"></i>woxsofastudio@gmail.com</li>
                     </ul>
                 </div>
             </div>
@@ -1283,6 +1348,88 @@
     </footer>
 
     <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("lrW3JHNHD3g3Yal8K");
+            console.log("EmailJS initialized");
+        })();
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const statusMsg = document.getElementById('statusMsg');
+            
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            statusMsg.textContent = 'Sending your message...';
+            statusMsg.className = 'status-message info';
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value || 'Not provided',
+                service: document.getElementById('service').value || 'Not specified',
+                message: document.getElementById('message').value
+            };
+            
+            console.log('Sending form data:', formData);
+            
+            // 1. Send email to business (Contact Form Submission template)
+            emailjs.send('service_b5ina3g', 'template_2720vxi', {
+                from_name: formData.name,
+                from_email: formData.email,
+                phone: formData.phone,
+                service: formData.service,
+                message: formData.message,
+                to_email: 'woxsofastudio@gmail.com',
+                reply_to: formData.email,
+                date: new Date().toLocaleString()
+            })
+            .then(function(response) {
+                console.log('SUCCESS! Message sent to business', response.status, response.text);
+                
+                // 2. Send auto-reply to user (Auto Reply template)
+                return emailjs.send('service_b5ina3g', 'template_t2o0w7l', {
+                    to_name: formData.name,
+                    to_email: formData.email,
+                    service: formData.service,
+                    date: new Date().toLocaleString()
+                });
+            })
+            .then(function(response) {
+                console.log('SUCCESS! Auto-reply sent to user', response.status, response.text);
+                
+                // Show success message
+                statusMsg.textContent = 'Thank you! Your message has been sent successfully. Check your email for confirmation.';
+                statusMsg.className = 'status-message success';
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+            })
+            .catch(function(error) {
+                console.error('FAILED...', error);
+                
+                // Show appropriate error message
+                let errorMessage = 'Sorry, there was an error sending your message. Please try again or contact us directly at woxsofastudio@gmail.com';
+                
+                if (error.text && error.text.includes('recipients address is empty')) {
+                    errorMessage = 'Email configuration error. Please email us directly at woxsofastudio@gmail.com';
+                }
+                
+                statusMsg.textContent = errorMessage;
+                statusMsg.className = 'status-message error';
+            })
+            .finally(function() {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Get Free Consultation';
+            });
+        });
+
         // Loading Animation
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
@@ -1344,13 +1491,6 @@
                     });
                 }
             });
-        });
-
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your inquiry! Our Wox design team will contact you within 24 hours to discuss your custom furniture needs.');
-            this.reset();
         });
 
         // Animation on scroll
