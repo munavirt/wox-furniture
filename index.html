@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wox Sofa Studio | Custom Compressed Furniture</title>
+    <title>Wox Sofa Studio | Custom Compressed Sofas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Add EmailJS SDK -->
@@ -11,9 +11,9 @@
     <style>
         :root {
             --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #2980b9;
-            --light: #f8fafc;
+            --secondary: #f6b93c;
+            --accent: #e6a229;
+            --light: #ffffff;
             --dark: #1a1a1a;
             --gray: #7a7a7a;
             --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -63,11 +63,11 @@
             display: inline-block;
             padding: 14px 32px;
             background-color: var(--secondary);
-            color: white;
+            color: var(--primary);
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -95,7 +95,7 @@
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 10px 25px rgba(246, 185, 60, 0.4);
         }
 
         section {
@@ -136,7 +136,7 @@
 
         /* Header Styles */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: white;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
             position: fixed;
             width: 100%;
@@ -260,7 +260,7 @@
             text-align: left;
             position: relative;
             overflow: hidden;
-            background-color: var(--light);
+            background-color: white;
             padding-top: var(--header-height);
         }
 
@@ -353,7 +353,7 @@
 
         .floating-element {
             position: absolute;
-            background: rgba(52, 152, 219, 0.05);
+            background: rgba(246, 185, 60, 0.05);
             border-radius: 50%;
             animation: float 20s infinite linear;
         }
@@ -458,7 +458,7 @@
 
         /* Products Section */
         .products {
-            background-color: var(--light);
+            background-color: white;
         }
 
         .products-grid {
@@ -530,36 +530,12 @@
             font-size: 1.2rem;
         }
 
-        .product-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--secondary);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .space-saving-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: #2ecc71;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
         .customizable-badge {
             position: absolute;
             top: 15px;
             right: 15px;
             background-color: var(--secondary);
-            color: white;
+            color: var(--primary);
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -580,7 +556,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(41, 128, 185, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(246, 185, 60, 0.03) 0%, rgba(230, 162, 41, 0.05) 100%);
             z-index: 0;
         }
 
@@ -637,7 +613,7 @@
 
         /* Features Section */
         .features {
-            background-color: var(--light);
+            background-color: white;
         }
 
         .features-grid {
@@ -726,7 +702,7 @@
         }
 
         .contact-detail:hover {
-            background-color: var(--light);
+            background-color: #f9f9f9;
             transform: translateX(5px);
         }
 
@@ -735,7 +711,7 @@
             height: 50px;
             line-height: 50px;
             text-align: center;
-            background-color: var(--light);
+            background-color: #f9f9f9;
             border-radius: 50%;
             margin-right: 20px;
             color: var(--secondary);
@@ -750,7 +726,7 @@
         }
 
         .contact-form {
-            background-color: var(--light);
+            background-color: white;
             padding: 40px;
             border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -781,7 +757,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--secondary);
-            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+            box-shadow: 0 0 0 2px rgba(246, 185, 60, 0.2);
         }
 
         textarea.form-control {
@@ -821,7 +797,7 @@
         .form-group select:focus {
             border-color: var(--secondary);
             outline: none;
-            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+            box-shadow: 0 0 0 2px rgba(246, 185, 60, 0.2);
         }
 
         /* Status Message */
@@ -849,6 +825,80 @@
             background-color: #d1ecf1;
             color: #0c5460;
             border: 1px solid #bee5eb;
+        }
+
+        /* Location Section */
+        .location {
+            background-color: white;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .location-info p {
+            margin-bottom: 20px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .location-details {
+            margin-top: 30px;
+        }
+
+        .location-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .location-detail:hover {
+            background-color: #f9f9f9;
+            transform: translateX(5px);
+        }
+
+        .location-detail i {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 50%;
+            margin-right: 20px;
+            color: var(--secondary);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .location-detail:hover i {
+            background-color: var(--secondary);
+            color: white;
+            transform: rotate(15deg);
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Footer */
@@ -917,6 +967,7 @@
 
         .social-links a:hover {
             background-color: var(--secondary);
+            color: var(--primary);
             transform: translateY(-5px);
         }
 
@@ -951,7 +1002,7 @@
         .loader-spinner {
             width: 60px;
             height: 60px;
-            border: 4px solid rgba(52, 152, 219, 0.3);
+            border: 4px solid rgba(246, 185, 60, 0.3);
             border-top: 4px solid var(--secondary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -1014,7 +1065,8 @@
             }
             
             .space-saving-content,
-            .custom-design-content {
+            .custom-design-content,
+            .location-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
@@ -1077,6 +1129,7 @@
             .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
             .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
             .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+            .nav-links.active li:nth-child(6) { transition-delay: 0.6s; }
 
             .hamburger {
                 display: block;
@@ -1189,12 +1242,13 @@
     <header id="header">
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Wox<span>Sofa</span></a>
+                <a href="#" class="logo"><span>Wox</span> Sofa</a>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#space-saving">Space Saving</a></li>
-                    <li><a href="#products">Products</a></li>
+                    <li><a href="#products">Sofas</a></li>
                     <li><a href="#custom">Custom Design</a></li>
+                    <li><a href="#location">Location</a></li>
                     <li><a href="#contact" class="btn">Get Quote</a></li>
                 </ul>
                 <button class="hamburger" id="hamburger">
@@ -1216,13 +1270,13 @@
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1>Custom <br>Compressed <br>Furniture by <br> Wox</h1>
-                <p>Transform your living space with our innovative compressed furniture solutions. Smart design meets functionality with complete customization.</p>
-                <a href="#products" class="btn">Explore Products</a>
+                <h1>Custom <br>Compressed <br>Sofas by <br> Wox</h1>
+                <p>Transform your living space with our innovative compressed sofa solutions. Smart design meets functionality with complete customization.</p>
+                <a href="#products" class="btn">Explore Sofas</a>
             </div>
         </div>
         <div class="hero-image">
-            <img src="./images/first-main.png" alt="Compressed Furniture">
+            <img src="../images/first-main.png" alt="Compressed Sofa">
         </div>
     </section>
 
@@ -1232,7 +1286,7 @@
             <div class="space-saving-content">
                 <div class="space-saving-text slide-in-left">
                     <h2>Revolutionary Space Optimization</h2>
-                    <p>Our compressed furniture technology allows you to transform your living space with pieces that expand when needed and compress for storage. All products are fully customizable to your specifications.</p>
+                    <p>Our compressed sofa technology allows you to transform your living space with sofas that expand when needed and compress for storage. All sofas are fully customizable to your specifications.</p>
                     
                     <div class="space-saving-features">
                         <div class="space-feature">
@@ -1241,7 +1295,7 @@
                         </div>
                         <div class="space-feature">
                             <i class="fas fa-expand-arrows-alt"></i>
-                            <span>Easy expansion to full-size furniture</span>
+                            <span>Easy expansion to full-size sofa</span>
                         </div>
                         <div class="space-feature">
                             <i class="fas fa-tools"></i>
@@ -1253,14 +1307,14 @@
                         </div>
                         <div class="space-feature">
                             <i class="fas fa-palette"></i>
-                            <span>Complete customization for all products</span>
+                            <span>Complete customization for all sofas</span>
                         </div>
                     </div>
                     
                     <a href="#products" class="btn">See How It Works</a>
                 </div>
                 <div class="space-saving-image slide-in-right">
-                    <img src="./images/second-image.png" alt="Space Saving Furniture">
+                    <img src="../images/second-image.png" alt="Space Saving Sofa">
                 </div>
             </div>
         </div>
@@ -1270,13 +1324,13 @@
     <section class="products" id="products">
         <div class="container">
             <div class="section-title">
-                <h2>Our Compressed Furniture Collection</h2>
-                <p>Discover our range of space-saving furniture designed for modern urban living. All products can be customized to your exact specifications.</p>
+                <h2>Our Compressed Sofa Collection</h2>
+                <p>Discover our range of space-saving sofas designed for modern urban living. All sofas can be customized to your exact specifications.</p>
             </div>
             <div class="products-grid">
                 <div class="product-card zoom-in">
                     <div class="customizable-badge">Customizable</div>
-                    <img src="./images/product-1.png" alt="Compressed Sofa" class="product-img">
+                    <img src="../images/product-1.png" alt="Compressed Sofa" class="product-img">
                     <div class="product-content">
                         <h3>Transform Sofa</h3>
                         <p>Compresses to 1/3 of its size for storage. Expands to a comfortable 3-seater sofa in seconds. Customize size, fabric, and color.</p>
@@ -1288,10 +1342,10 @@
                 </div>
                 <div class="product-card zoom-in">
                     <div class="customizable-badge">Customizable</div>
-                    <img src="./images/prodcut-3.png" alt="Compressed Dining Table" class="product-img">
+                    <img src="../images/prodcut-3.png" alt="Compressed Sofa" class="product-img">
                     <div class="product-content">
-                        <h3>Expand Table</h3>
-                        <p>Folds down to just 4 inches thick. Extends to a full-size dining table for 6 people. Choose your dimensions and finish. with different colors</p>
+                        <h3>Compact Sofa Pro</h3>
+                        <p>Folds down to just 4 inches thick. Extends to a full-size sofa with storage compartments. Choose your dimensions and finish.</p>
                         <div class="product-price">
                             <span class="price">From ₹14499</span>
                             <a href="#contact" class="btn">Customize</a>
@@ -1307,8 +1361,8 @@
         <div class="container">
             <div class="custom-design-content">
                 <div class="custom-design-text slide-in-left">
-                    <h2>Custom Compressed Furniture</h2>
-                    <p>At Wox Sofa Studio, we specialize in creating bespoke compressed furniture solutions tailored to your specific space and needs. All of our products can be completely customized.</p>
+                    <h2>Custom Compressed Sofas</h2>
+                    <p>At Wox Sofa Studio, we specialize in creating bespoke compressed sofa solutions tailored to your specific space and needs. All of our sofas can be completely customized.</p>
                     
                     <div class="custom-design-features">
                         <div class="custom-feature">
@@ -1329,14 +1383,14 @@
                         </div>
                         <div class="custom-feature">
                             <i class="fas fa-couch"></i>
-                            <span>All products customizable</span>
+                            <span>All sofas customizable</span>
                         </div>
                     </div>
                     
                     <a href="#contact" class="btn">Start Your Custom Project</a>
                 </div>
                 <div class="custom-design-image slide-in-right">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Custom Design Process">
+                    <img src="https://images.unsplash.com/photo-1599696848652-f0ff23bc911f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Custom Design Process">
                 </div>
             </div>
         </div>
@@ -1347,7 +1401,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Why Choose Wox Sofa Studio</h2>
-                <p>Our compressed furniture solutions offer unique benefits for modern living spaces with complete customization.</p>
+                <p>Our compressed sofa solutions offer unique benefits for modern living spaces with complete customization.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card fade-in">
@@ -1355,21 +1409,64 @@
                         <i class="fas fa-home"></i>
                     </div>
                     <h3>Space Optimization</h3>
-                    <p>Maximize your living area with furniture that compresses when not in use, freeing up valuable space.</p>
+                    <p>Maximize your living area with sofas that compress when not in use, freeing up valuable space.</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
                         <i class="fas fa-shipping-fast"></i>
                     </div>
                     <h3>Easy Delivery</h3>
-                    <p>Compressed furniture is easier to transport and maneuver through tight spaces and doorways.</p>
+                    <p>Compressed sofas are easier to transport and maneuver through tight spaces and doorways.</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
                         <i class="fas fa-palette"></i>
                     </div>
                     <h3>Complete Customization</h3>
-                    <p>All our products can be tailored to your exact specifications, dimensions, and style preferences.</p>
+                    <p>All our sofas can be tailored to your exact specifications, dimensions, and style preferences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="container">
+            <div class="section-title">
+                <h2>Visit Our Studio</h2>
+                <p>Come see our compressed sofa collection in person and experience the quality firsthand.</p>
+            </div>
+            <div class="location-content">
+                <div class="location-info slide-in-left">
+                    <h3>Find Us Easily</h3>
+                    <p>Our showroom is conveniently located in Areekode, Malappuram. Visit us to see our compressed sofa collection and discuss your customization needs with our experts.</p>
+                    
+                    <div class="location-details">
+                        <div class="location-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Our Address</h4>
+                                <p>Kavanur-12<br>Near HP Petrole Pump<br>Areekode</p>
+                            </div>
+                        </div>
+                        <div class="location-detail">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Opening Hours</h4>
+                                <p>Monday - Sunday: 9:00 AM - 5:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="location-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>+91 9747393339</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container slide-in-right">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.714697906187!2d76.0496888!3d11.208732099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba647cfe129046f%3A0x9eb34427de5c98ff!2sSmart%20Sofa!5e0!3m2!1sen!2sin!4v1763836331285!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -1380,19 +1477,19 @@
         <div class="container">
             <div class="section-title">
                 <h2>Get In Touch</h2>
-                <p>Have questions about our compressed furniture or want to customize a product? Contact our team today.</p>
+                <p>Have questions about our compressed sofas or want to customize a sofa? Contact our team today.</p>
             </div>
             <div class="contact-grid">
                 <div class="contact-info slide-in-left">
-                    <h3>Let's Create Your Custom Furniture</h3>
-                    <p>Our team at Wox Sofa Studio is ready to help you design the perfect compressed furniture solutions for your home or office. All of our products can be customized to your exact needs.</p>
+                    <h3>Let's Create Your Custom Sofa</h3>
+                    <p>Our team at Wox Sofa Studio is ready to help you design the perfect compressed sofa solutions for your home or office. All of our sofas can be customized to your exact needs.</p>
                     
                     <div class="contact-details">
                         <div class="contact-detail">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h4>Visit Our Studio</h4>
-                                <p>Eliyaparamb<br>Areekode<br>Malappuram</p>
+                                <p>Kavanur-12<br>Near HP Petrole Pump<br>Areekode</p>
                             </div>
                         </div>
                         <div class="contact-detail">
@@ -1424,9 +1521,9 @@
                         </div>
                         <div class="form-group">
                             <select class="form-control" id="service" name="service">
-                                <option value="">Select Product Interest</option>
+                                <option value="">Select Sofa Interest</option>
                                 <option value="sofa">Transform Sofa</option>
-                                <option value="table">Expand Table</option>
+                                <option value="table">Compact Sofa Pro</option>
                                 <option value="custom">Custom Project</option>
                             </select>
                         </div>
@@ -1447,11 +1544,11 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>Wox Sofa Studio</h3>
-                    <p>Creating innovative compressed furniture solutions for modern urban living since 2015. We're dedicated to maximizing your space with customizable furniture that doesn't compromise on comfort or style.</p>
+                    <p>Creating innovative compressed sofa solutions for modern urban living since 2015. We're dedicated to maximizing your space with customizable sofas that don't compromise on comfort or style.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/woxsofa/"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/woxsofa/"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
@@ -1460,29 +1557,30 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#space-saving">Space Saving</a></li>
-                        <li><a href="#products">Products</a></li>
+                        <li><a href="#products">Sofas</a></li>
                         <li><a href="#custom">Custom Design</a></li>
+                        <li><a href="#location">Location</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Our Products</h3>
+                    <h3>Our Sofas</h3>
                     <ul>
                         <li><a href="#products">Transform Sofa</a></li>
-                        <li><a href="#products">Expand Table</a></li>
-                        <li><a href="#custom">Custom Furniture</a></li>
+                        <li><a href="#products">Compact Sofa Pro</a></li>
+                        <li><a href="#custom">Custom Sofas</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Contact Info</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Eliyaparamb<br>Areekode <br>Malappuram</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kavanur-12<br>Near HP Petrole Pump <br>Areekode</li>
                         <li><i class="fas fa-phone"></i> +91 9747393339</li>
                         <li><i class="fas fa-envelope"></i> woxsofastudio@gmail.com</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Promocraft. All Rights Reserved.</p>
+                <p>&copy; 2025 Wox Sofa Studio. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
