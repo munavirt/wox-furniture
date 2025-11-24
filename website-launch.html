@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wox Sofa Studio - Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+        }
+
+        /* Premium background texture */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255, 215, 0, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 85% 30%, rgba(255, 215, 0, 0.02) 0%, transparent 20%),
+                radial-gradient(circle at 50% 80%, rgba(255, 215, 0, 0.02) 0%, transparent 20%);
+            z-index: -1;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 900px;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        /* Premium accent line */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+        }
+        
+        .sofa-icon {
+            font-size: 5rem;
+            margin-bottom: 3rem;
+            color: #FFD700;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out forwards 0.3s;
+            filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.15));
+        }
+        
+        .title-line {
+            font-size: 3.2rem;
+            margin-bottom: 4rem;
+            color: #1a1a1a;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out forwards 0.6s;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .wox-yellow {
+            color: #FFD700;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .wox-yellow::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+            transform: scaleX(0);
+            animation: underlineExpand 1.5s ease-out forwards 1.8s;
+        }
+        
+        .launch-text {
+            font-size: 1.6rem;
+            color: #1a1a1a;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out forwards 0.9s;
+        }
+        
+        .typing-text {
+            overflow: hidden;
+            border-right: 2px solid #FFD700;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s ease-in-out infinite, blink-caret 0.9s step-end infinite;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Premium decorative elements */
+        .corner-decoration {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            opacity: 0.1;
+        }
+
+        .corner-top-left {
+            top: 20px;
+            left: 20px;
+            border-top: 2px solid #FFD700;
+            border-left: 2px solid #FFD700;
+        }
+
+        .corner-top-right {
+            top: 20px;
+            right: 20px;
+            border-top: 2px solid #FFD700;
+            border-right: 2px solid #FFD700;
+        }
+
+        .corner-bottom-left {
+            bottom: 20px;
+            left: 20px;
+            border-bottom: 2px solid #FFD700;
+            border-left: 2px solid #FFD700;
+        }
+
+        .corner-bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-bottom: 2px solid #FFD700;
+            border-right: 2px solid #FFD700;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            50% {
+                width: 100%;
+            }
+            90% {
+                width: 100%;
+            }
+            100% {
+                width: 0;
+            }
+        }
+        
+        @keyframes blink-caret {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #FFD700;
+            }
+        }
+        
+        @keyframes underlineExpand {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+        
+        @keyframes subtle-pulse {
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.15));
+            }
+            50% {
+                transform: scale(1.08);
+                filter: drop-shadow(0 6px 12px rgba(255, 215, 0, 0.25));
+            }
+            100% {
+                transform: scale(1);
+                filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.15));
+            }
+        }
+        
+        .pulse {
+            animation: subtle-pulse 4s ease-in-out infinite;
+        }
+
+        /* Premium responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 1.5rem;
+            }
+            
+            .title-line {
+                font-size: 2.4rem;
+                gap: 8px;
+                margin-bottom: 3rem;
+            }
+            
+            .launch-text {
+                font-size: 1.3rem;
+                height: 50px;
+            }
+            
+            .sofa-icon {
+                font-size: 4rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .corner-decoration {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .title-line {
+                font-size: 2rem;
+                gap: 6px;
+                margin-bottom: 2.5rem;
+            }
+            
+            .launch-text {
+                font-size: 1.1rem;
+                height: 45px;
+            }
+            
+            .sofa-icon {
+                font-size: 3.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .corner-decoration {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium corner decorations -->
+    <div class="corner-decoration corner-top-left"></div>
+    <div class="corner-decoration corner-top-right"></div>
+    <div class="corner-decoration corner-bottom-left"></div>
+    <div class="corner-decoration corner-bottom-right"></div>
+    
+    <div class="container">
+        <div class="sofa-icon pulse">
+            <i class="fas fa-couch"></i>
+        </div>
+        
+        <div class="title-line">
+            <span>Welcome to</span>
+            <span class="wox-yellow">Wox</span>
+            <span>Sofa Studio</span>
+        </div>
+        
+        <div class="launch-text">
+            <div class="typing-text">Our Website Is Launching Soon.....</div>
+        </div>
+    </div>
+</body>
+</html>
