@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wox Sofa Studio | Custom Compressed Sofas</title>
-
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>W</text></svg>"> 
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Add EmailJS SDK -->
@@ -21,8 +18,6 @@
             --gray: #7a7a7a;
             --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --header-height: 80px;
-            --whatsapp-green: #25D366;
-            --whatsapp-dark: #128C7E;
         }
 
         * {
@@ -256,10 +251,9 @@
             transform: rotate(-45deg) translate(6px, -6px);
         }
 
-        /* FIXED HERO SECTION - Image Size Fixed */
+        /* Hero Section */
         .hero {
             height: 100vh;
-            min-height: 700px;
             display: flex;
             align-items: center;
             color: var(--primary);
@@ -270,212 +264,83 @@
             padding-top: var(--header-height);
         }
 
-        .hero-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-            padding: 0 20px;
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
         .hero-content {
-            flex: 1;
             max-width: 600px;
             position: relative;
             z-index: 1;
-            padding-right: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.5s;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
             margin-bottom: 20px;
             line-height: 1.1;
             position: relative;
             overflow: hidden;
             font-weight: 700;
             letter-spacing: -0.5px;
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.2s;
-            opacity: 0;
         }
 
-        .hero-slide.active .hero h1 {
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.2s;
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary);
+            transform: translateX(-100%);
+            animation: slideIn 1s ease forwards 1.5s;
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-            margin-bottom: 30px;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: 40px;
             opacity: 0.9;
-            color: var(--gray);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 0.8s;
             font-weight: 300;
             max-width: 500px;
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.4s;
+            color: var(--gray);
+        }
+
+        .hero .btn {
             opacity: 0;
+            animation: fadeUp 1s ease forwards 1.1s;
         }
 
-        .hero-slide.active .hero p {
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.4s;
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
         }
 
-        .hero-features {
-            margin-bottom: 40px;
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .hero-feature {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-        }
-
-        .hero-slide.active .hero-feature:nth-child(1) {
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.6s;
-        }
-        .hero-slide.active .hero-feature:nth-child(2) {
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.7s;
-        }
-        .hero-slide.active .hero-feature:nth-child(3) {
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.8s;
-        }
-        .hero-slide.active .hero-feature:nth-child(4) {
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.9s;
-        }
-
-        .hero-feature i {
-            color: var(--secondary);
-            margin-right: 15px;
-            font-size: 1.3rem;
-            min-width: 24px;
-        }
-
-        .hero-feature span {
-            font-size: clamp(1rem, 2vw, 1.1rem);
-        }
-
-        .hero-slide.active .btn {
-            animation: fadeInUp 0.8s ease forwards 1s;
-            opacity: 0;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+        @keyframes fadeUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* FIXED: Hero Image Container - Larger on desktop */
-        .hero-image {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            animation: fadeInRight 0.8s ease forwards;
-            opacity: 0;
-            height: 100%;
-            min-height: 500px;
-        }
-
-        .hero-slide.active .hero-image {
-            animation: fadeInRight 0.8s ease forwards;
-            animation-delay: 0.3s;
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
+        @keyframes slideIn {
             to {
-                opacity: 1;
                 transform: translateX(0);
             }
         }
 
-        /* FIXED: Hero Images - Much larger on desktop */
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            max-height: 700px;
-            object-fit: contain;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
-            max-width: 800px;
-            min-width: 600px;
-            transform: scale(1.2); /* Scale up the images */
-            transform-origin: center;
-        }
-
-        /* Progress Indicators */
-        .progress-indicators {
-            position: absolute;
-            bottom: 40px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            z-index: 10;
-        }
-
-        .progress-indicator {
-            width: 40px;
-            height: 4px;
-            background-color: rgba(44, 62, 80, 0.2);
-            cursor: pointer;
-            transition: var(--transition);
-            overflow: hidden;
-            border-radius: 2px;
-        }
-
-        .progress-indicator.active {
-            background-color: rgba(246, 185, 60, 0.3);
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background-color: var(--secondary);
-            transition: width 3s linear;
-        }
-
-        .progress-indicator.active .progress-bar {
-            width: 100%;
-        }
-
+        /* Floating Elements */
         .floating-elements {
             position: absolute;
             top: 0;
@@ -537,223 +402,6 @@
             }
         }
 
-        /* WhatsApp Chat Widget */
-        .whatsapp-widget {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .whatsapp-button {
-            width: 60px;
-            height: 60px;
-            background-color: var(--whatsapp-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 32px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
-            background-color: var(--whatsapp-dark);
-        }
-
-        .whatsapp-button i {
-            transition: var(--transition);
-        }
-
-        .whatsapp-button.active i {
-            transform: rotate(180deg);
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        .whatsapp-chat {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 320px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-chat.active {
-            opacity: 1;
-            transform: translateY(0);
-            visibility: visible;
-        }
-
-        .chat-header {
-            background: linear-gradient(135deg, var(--whatsapp-dark), var(--whatsapp-green));
-            color: white;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .chat-header i {
-            font-size: 24px;
-        }
-
-        .chat-header h4 {
-            font-size: 16px;
-            margin: 0;
-            flex: 1;
-        }
-
-        .chat-header span {
-            font-size: 12px;
-            opacity: 0.9;
-        }
-
-        .chat-body {
-            padding: 20px;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .welcome-message {
-            background: #f0f0f0;
-            padding: 12px 16px;
-            border-radius: 12px 12px 12px 4px;
-            margin-bottom: 15px;
-            font-size: 14px;
-            line-height: 1.5;
-            position: relative;
-        }
-
-        .welcome-message::before {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 15px;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 8px solid #f0f0f0;
-        }
-
-        .chat-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .chat-option {
-            display: block;
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 12px 15px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .chat-option:hover {
-            background: #f8f8f8;
-            border-color: var(--whatsapp-green);
-            color: var(--whatsapp-dark);
-        }
-
-        .chat-option i {
-            margin-right: 8px;
-            color: var(--whatsapp-green);
-        }
-
-        .chat-footer {
-            padding: 15px 20px;
-            background: #f8f8f8;
-            border-top: 1px solid #e0e0e0;
-            text-align: center;
-        }
-
-        .chat-footer p {
-            font-size: 12px;
-            color: var(--gray);
-            margin: 0;
-        }
-
-        .chat-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 5px;
-            opacity: 0.8;
-            transition: opacity 0.2s;
-        }
-
-        .chat-close:hover {
-            opacity: 1;
-        }
-
-        .whatsapp-cta {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            background: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 14px;
-            z-index: 9998;
-            opacity: 0;
-            transform: translateY(20px);
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-cta.active {
-            opacity: 1;
-            transform: translateY(0);
-            visibility: visible;
-        }
-
-        .whatsapp-cta i {
-            color: var(--whatsapp-green);
-            font-size: 18px;
-        }
-
         /* Space Saving Section */
         .space-saving {
             background-color: white;
@@ -804,8 +452,7 @@
 
         .space-saving-image img {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
+            height: auto;
             display: block;
         }
 
@@ -816,7 +463,7 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 40px;
             justify-items: center;
         }
@@ -844,32 +491,20 @@
         }
 
         .product-img {
-    width: 100%;
-    height: 320px; /* Change from 250px to 320px or higher */
-    object-fit: cover;
-    transition: var(--transition);
-}
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
 
-/* You might also want to adjust the .product-card height */
-.product-card {
-    background-color: white;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    transition: var(--transition);
-    opacity: 0;
-    transform: translateY(30px);
-    position: relative;
-    max-width: 500px;
-    width: 100%;
-    min-height: 520px; /* Add this to set a minimum height */
-}
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
 
-/* Adjust the product content padding if needed */
-.product-content {
-    padding: 25px;
-    min-height: 200px; /* Ensure content area has enough height */
-}
+        .product-content {
+            padding: 25px;
+        }
+
         .product-content h3 {
             font-size: 1.4rem;
             margin-bottom: 10px;
@@ -905,82 +540,6 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
-        }
-
-        /* Key Benefits Section - NEW */
-        .key-benefits {
-            background-color: #f9f9f9;
-            padding: 100px 0;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .benefit-card {
-            background: white;
-            border-radius: 8px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border-top: 4px solid var(--secondary);
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .benefit-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .benefit-header h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .benefit-header .price-tag {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-
-        .benefit-features {
-            margin-bottom: 30px;
-        }
-
-        .benefit-feature {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-
-        .benefit-feature i {
-            color: var(--secondary);
-            margin-right: 15px;
-            font-size: 1.2rem;
-            margin-top: 3px;
-            min-width: 24px;
-        }
-
-        .benefit-feature span {
-            color: var(--primary);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .benefit-action {
-            text-align: center;
         }
 
         /* Custom Design Section */
@@ -1048,8 +607,7 @@
 
         .custom-design-image img {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
+            height: auto;
             display: block;
         }
 
@@ -1218,15 +776,20 @@
             color: var(--primary);
             cursor: pointer;
             transition: var(--transition);
+
+            /* Remove default arrow */
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
+
+            /* Custom arrow */
             background-image: url("data:image/svg+xml;utf8,<svg fill='%232c3e50' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
             background-repeat: no-repeat;
             background-position: right 15px center;
             background-size: 16px;
         }
 
+        /* Hover + Focus effect */
         .form-group select:hover {
             border-color: var(--secondary);
         }
@@ -1450,135 +1013,81 @@
             100% { transform: rotate(360deg); }
         }
 
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Enhanced Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        /* RESPONSIVE DESIGN - Hero Section Image Fixes */
-
-        /* Large Desktops */
-        @media (min-width: 1400px) {
-            .hero-image img {
-                max-width: 900px;
-                min-width: 700px;
-                transform: scale(1.3);
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Desktop */
-        @media (min-width: 1200px) {
-            .hero-image img {
-                max-width: 850px;
-                min-width: 650px;
-                transform: scale(1.25);
-            }
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        /* Tablet Landscape to Desktop */
-        @media (min-width: 993px) and (max-width: 1199px) {
-            .hero-image img {
-                max-width: 750px;
-                min-width: 550px;
-                transform: scale(1.2);
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1100px) {
+            .hero h1 {
+                font-size: 3.2rem;
             }
             
-            .hero-content {
-                max-width: 500px;
-                padding-right: 30px;
-            }
-            
-            .benefits-grid {
+            .space-saving-content,
+            .custom-design-content,
+            .location-content {
                 grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .space-saving-image,
+            .custom-design-image {
+                order: -1;
             }
         }
 
-        /* Tablet Landscape and smaller desktops */
-        @media (min-width: 768px) and (max-width: 992px) {
-            .hero-slide {
-                flex-direction: column;
-                justify-content: center;
-                text-align: center;
-                padding: 20px;
-            }
-            
-            .hero-content {
-                max-width: 100%;
-                padding-right: 0;
-                margin-bottom: 40px;
-                order: 2;
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
             }
             
             .hero-image {
-                height: 50%;
-                width: 80%;
-                max-width: 600px;
-                margin-bottom: 40px;
-                order: 1;
-                min-height: 400px;
-            }
-            
-            .hero-image img {
-                max-width: 100%;
-                min-width: auto;
-                transform: scale(1);
-                max-height: 500px;
-            }
-            
-            .hero h1 {
-                font-size: clamp(2.2rem, 5vw, 3rem);
-            }
-            
-            .hero p {
-                margin: 0 auto 30px;
-                max-width: 600px;
-            }
-            
-            .hero-features {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-                margin-bottom: 30px;
-                max-width: 500px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .hero-feature {
-                margin-bottom: 0;
-                justify-content: center;
-            }
-            
-            .hero-slide.active .hero-image {
-                animation: fadeInUp 0.8s ease forwards;
-                animation-delay: 0.3s;
-            }
-            
-            @keyframes fadeInRight {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            .floating-element:nth-child(1),
-            .floating-element:nth-child(4) {
-                display: none;
-            }
-            
-            .benefits-grid {
-                grid-template-columns: 1fr;
+                width: 40%;
             }
         }
 
-        /* Tablet Portrait */
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .navbar {
                 padding: 0;
             }
@@ -1625,76 +1134,26 @@
             .hamburger {
                 display: block;
             }
-            
-            .hero {
-                min-height: 800px;
-                height: auto;
-                padding: 120px 0 80px;
-            }
-            
-            .hero-slide {
-                position: relative;
-                opacity: 1;
-                visibility: visible;
-                display: none;
-                flex-direction: column;
-                justify-content: flex-start;
-            }
-            
-            .hero-slide.active {
-                display: flex;
-            }
-            
-            .hero-container {
-                height: auto;
-            }
-            
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.4rem;
             }
             
             .hero p {
-                font-size: 1.2rem;
-                margin-bottom: 25px;
-            }
-            
-            .hero-image {
-                height: 400px;
-                width: 100%;
-                margin-bottom: 30px;
-                min-height: 400px;
-            }
-            
-            .hero-image img {
-                max-width: 100%;
-                min-width: auto;
-                transform: scale(1);
-                max-height: 400px;
-            }
-            
-            .hero-features {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 10px;
-                max-width: 100%;
-                text-align: left;
-            }
-            
-            .hero-feature {
-                justify-content: flex-start;
-            }
-            
-            .progress-indicators {
-                bottom: 30px;
+                font-size: 1.1rem;
             }
             
             .section-title h2 {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
+            }
+            
+            .hero-image {
+                display: none;
             }
             
             .space-saving-text h2,
             .custom-design-text h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .contact-form {
@@ -1709,76 +1168,11 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                margin-top: 30px;
-            }
-            
-            .benefit-card {
-                padding: 30px 20px;
-            }
-            
-            .space-saving-content,
-            .custom-design-content,
-            .location-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .space-saving-image,
-            .custom-design-image {
-                order: -1;
-            }
-            
-            /* WhatsApp Widget Responsive */
-            .whatsapp-widget {
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .whatsapp-button {
-                width: 56px;
-                height: 56px;
-                font-size: 28px;
-            }
-            
-            .whatsapp-chat {
-                width: 300px;
-                right: -10px;
-            }
-            
-            .whatsapp-cta {
-                bottom: 90px;
-                right: 20px;
-                padding: 10px 18px;
-                font-size: 13px;
-            }
         }
 
-        /* Mobile Phones */
         @media (max-width: 576px) {
-            .hero {
-                padding: 100px 0 60px;
-                min-height: 700px;
-            }
-            
             .hero h1 {
                 font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .hero-image {
-                height: 350px;
-                min-height: 350px;
-            }
-            
-            .hero-image img {
-                max-height: 350px;
             }
 
             .section-title h2 {
@@ -1797,14 +1191,6 @@
             .product-card {
                 margin-bottom: 20px;
             }
-            
-            .benefit-card {
-                padding: 25px 15px;
-            }
-            
-            .benefit-header h3 {
-                font-size: 1.5rem;
-            }
 
             .feature-card {
                 padding: 30px 20px;
@@ -1821,79 +1207,11 @@
             .products-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .progress-indicators {
-                bottom: 20px;
-                gap: 15px;
-            }
-            
-            .progress-indicator {
-                width: 30px;
-            }
-            
-            /* WhatsApp Widget Responsive */
-            .whatsapp-widget {
-                bottom: 15px;
-                right: 15px;
-            }
-            
-            .whatsapp-button {
-                width: 52px;
-                height: 52px;
-                font-size: 26px;
-            }
-            
-            .whatsapp-chat {
-                width: 280px;
-                right: -20px;
-            }
-            
-            .whatsapp-cta {
-                display: none;
-            }
         }
 
-        /* Small Mobile Phones */
         @media (max-width: 400px) {
-            .hero {
-                min-height: 650px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-image {
-                height: 300px;
-                min-height: 300px;
-            }
-            
-            .hero-image img {
-                max-height: 300px;
-            }
-            
-            .hero-feature span {
-                font-size: 0.95rem;
-            }
-            
             .products-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .benefit-card {
-                padding: 20px 15px;
-            }
-            
-            .benefit-header h3 {
-                font-size: 1.3rem;
-            }
-            
-            .benefit-feature span {
-                font-size: 0.9rem;
             }
 
             .features-grid {
@@ -1904,88 +1222,12 @@
                 grid-template-columns: 1fr;
             }
 
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
             .section-title h2 {
                 font-size: 1.8rem;
-            }
-            
-            /* WhatsApp Widget Responsive */
-            .whatsapp-chat {
-                width: 260px;
-                right: -30px;
-            }
-        }
-
-        /* Mobile Landscape */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .hero {
-                height: auto;
-                min-height: 100vh;
-                padding: 100px 0 60px;
-            }
-            
-            .hero-image {
-                height: 50vh;
-                max-height: 400px;
-                min-height: 400px;
-            }
-            
-            .hero-image img {
-                max-height: 400px;
-            }
-            
-            .hero-content {
-                margin-bottom: 20px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-                margin-bottom: 15px;
-            }
-            
-            .hero p {
-                margin-bottom: 20px;
-            }
-            
-            .hero-features {
-                margin-bottom: 20px;
-            }
-            
-            .progress-indicators {
-                bottom: 20px;
-            }
-        }
-
-        /* Very Small Mobile */
-        @media (max-width: 360px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-feature span {
-                font-size: 0.9rem;
-            }
-            
-            .hero-image {
-                height: 280px;
-                min-height: 280px;
-            }
-            
-            .hero-image img {
-                max-height: 280px;
-            }
-            
-            .benefit-card {
-                padding: 18px 12px;
-            }
-            
-            /* WhatsApp Widget Responsive */
-            .whatsapp-chat {
-                width: 240px;
-                right: -40px;
             }
         }
     </style>
@@ -2005,7 +1247,6 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#space-saving">Space Saving</a></li>
                     <li><a href="#products">Sofas</a></li>
-                    <li><a href="#key-benefits">Key Benefits</a></li>
                     <li><a href="#custom">Custom Design</a></li>
                     <li><a href="#location">Location</a></li>
                     <li><a href="#contact" class="btn">Get Quote</a></li>
@@ -2019,7 +1260,7 @@
         </div>
     </header>
 
-    <!-- Hero Section with Auto-Rotating Product Showcase -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="floating-elements">
             <div class="floating-element"></div>
@@ -2027,80 +1268,15 @@
             <div class="floating-element"></div>
             <div class="floating-element"></div>
         </div>
-        <div class="container hero-container">
-            <!-- Slide 1: Togo Sofa -->
-            <div class="hero-slide active" id="slide1">
-                <div class="hero-content">
-                    <h1>Togo</h1>
-                    <p>A stylish, ultra-comfortable modular sofa that expands to full seating while storing in minimal space. Perfect for modern living.</p>
-                    
-                    <div class="hero-features">
-                        <div class="hero-feature">
-                            <i class="fas fa-compress-arrows-alt"></i>
-                            <span>Compresses to 1/3 of its size</span>
-                        </div>
-                        <div class="hero-feature">
-                            <i class="fas fa-couch"></i>
-                            <span>Expands into spacious lounge seating</span>
-                        </div>
-                        <div class="hero-feature">
-                            <i class="fas fa-palette"></i>
-                            <span>Fully customizable design</span>
-                        </div>
-                        <div class="hero-feature">
-                            <i class="fas fa-rupee-sign"></i>
-                            <span>From ₹14,500</span>
-                        </div>
-                    </div>
-                    
-                    <a href="#contact" class="btn">Customize This Sofa</a>
-                </div>
-                <div class="hero-image">
-                    <img src="./images/hero-togo.png" alt="Togo Sofa">
-                </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Custom <br>Compressed <br>Sofas by <br> Wox</h1>
+                <p>Transform your living space with our innovative compressed sofa solutions. Smart design meets functionality with complete customization.</p>
+                <a href="#products" class="btn">Explore Sofas</a>
             </div>
-
-            <!-- Slide 2: Sofa Cum Bed -->
-            <div class="hero-slide" id="slide2">
-                <div class="hero-content">
-                    <h1>Sofa Cum Bed</h1>
-                    <p>A sleek, ultra-thin sofa that transforms into a comfortable bed within seconds. Designed for compact apartments, studios, and multi-use rooms.</p>
-                    
-                    <div class="hero-features">
-                        <div class="hero-feature">
-                            <i class="fas fa-compress-arrows-alt"></i>
-                            <span>Minimal footprint, maximum comfort</span>
-                        </div>
-                        <div class="hero-feature">
-                            <i class="fas fa-bed"></i>
-                            <span>Dual-purpose design for living</span>
-                        </div>
-                        <div class="hero-feature">
-                            <i class="fas fa-palette"></i>
-                            <span>Breathable, premium upholstery fabric</span>
-                        </div>
-                        <div class="hero-feature">
-                            <i class="fas fa-rupee-sign"></i>
-                            <span>From ₹24,500</span>
-                        </div>
-                    </div>
-                    
-                    <a href="#contact" class="btn">Customize This Sofa</a>
-                </div>
-                <div class="hero-image">
-                    <img src="./images/hero-sofa-cum-bed.png" alt="Sofa Cum Bed">
-                </div>
-            </div>
-
-            <!-- Progress Indicators -->
-            <div class="progress-indicators">
-                <div class="progress-indicator active" data-slide="0">
-                    <div class="progress-bar"></div>
-                </div>
-                <div class="progress-indicator" data-slide="1">
-                    <div class="progress-bar"></div>
-                </div>
-            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/first-main.png" alt="Compressed Sofa">
         </div>
     </section>
 
@@ -2154,100 +1330,26 @@
             <div class="products-grid">
                 <div class="product-card zoom-in">
                     <div class="customizable-badge">Customizable</div>
-                    <img src="./images/hero-togo.png" alt="Togo Sofa" class="product-img">
+                    <img src="./images/product-1.png" alt="Compressed Sofa" class="product-img">
                     <div class="product-content">
-                        <h3>Togo</h3>
-                        <p>Compresses to 1/3 of its size for storage. Expands to comfortable seating in seconds. Customize size, fabric, and color.</p>
+                        <h3>Sofa Cum Bed</h3>
+                        <p>Compresses to 1/3 of its size for storage. Expands to a comfortable 3-seater sofa in seconds. Customize size, fabric, and color.</p>
                         <div class="product-price">
-                            <span class="price">From ₹14500</span>
+                            <span class="price">From ₹22500</span>
                             <a href="#contact" class="btn">Customize</a>
                         </div>
                     </div>
                 </div>
                 <div class="product-card zoom-in">
                     <div class="customizable-badge">Customizable</div>
-                    <img src="./images/hero-sofa-cum-bed.png" alt="Sofa Cum Bed" class="product-img">
+                    <img src="./images/prodcut-3.png" alt="Compressed Sofa" class="product-img">
                     <div class="product-content">
-                        <h3>Sofa Cum Bed</h3>
-                        <p>A sleek, ultra-thin sofa that transforms into a comfortable bed within seconds. Designed for compact apartments, studios, and multi-use rooms.</p>
+                        <h3>Togo</h3>
+                        <p>Folds down to just 4 inches thick. Extends to a full-size sofa with storage compartments. Choose your dimensions and finish.</p>
                         <div class="product-price">
-                            <span class="price">From ₹24500</span>
+                            <span class="price">From ₹14499</span>
                             <a href="#contact" class="btn">Customize</a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Benefits Section - NEW -->
-    <section class="key-benefits" id="key-benefits">
-        <div class="container">
-            <div class="section-title">
-                <h2>Key Benefits of Our Sofas</h2>
-                <p>Each of our sofa models offers unique advantages designed to solve specific space and comfort challenges.</p>
-            </div>
-            
-            <div class="benefits-grid">
-                <!-- Togo Benefits -->
-                <div class="benefit-card slide-in-left">
-                    <div class="benefit-header">
-                        <h3>Togo Sofa Benefits</h3>
-                        <div class="price-tag">Starting at ₹14,500</div>
-                    </div>
-                    
-                    <div class="benefit-features">
-                        <div class="benefit-feature">
-                            <i class="fas fa-compress-arrows-alt"></i>
-                            <span>Compresses to 1/3 of its full size for easy movement and cleaning</span>
-                        </div>
-                        <div class="benefit-feature">
-                            <i class="fas fa-expand-arrows-alt"></i>
-                            <span>Expands into a spacious lounge seat perfect for relaxation</span>
-                        </div>
-                        <div class="benefit-feature">
-                            <i class="fas fa-couch"></i>
-                            <span>High-density foam structure for long-lasting comfort and support</span>
-                        </div>
-                        <div class="benefit-feature">
-                            <i class="fas fa-palette"></i>
-                            <span>Custom fabrics, colors & sizes available to match your décor</span>
-                        </div>
-                    </div>
-                    
-                    <div class="benefit-action">
-                        <a href="#contact" class="btn">Customize Togo</a>
-                    </div>
-                </div>
-                
-                <!-- Sofa Cum Bed Benefits -->
-                <div class="benefit-card slide-in-right">
-                    <div class="benefit-header">
-                        <h3>Sofa Cum Bed Benefits</h3>
-                        <div class="price-tag">Starting at ₹24,500</div>
-                    </div>
-                    
-                    <div class="benefit-features">
-                        <div class="benefit-feature">
-                            <i class="fas fa-home"></i>
-                            <span>Minimal footprint, maximum comfort design for small spaces</span>
-                        </div>
-                        <div class="benefit-feature">
-                            <i class="fas fa-bed"></i>
-                            <span>Dual-purpose design perfect for guests and everyday use</span>
-                        </div>
-                        <div class="benefit-feature">
-                            <i class="fas fa-layer-group"></i>
-                            <span>Premium upholstery with breathable, durable fabric options</span>
-                        </div>
-                        <div class="benefit-feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Stable seating transforms seamlessly to restful sleeping surface</span>
-                        </div>
-                    </div>
-                    
-                    <div class="benefit-action">
-                        <a href="#contact" class="btn">Customize Sofa Bed</a>
                     </div>
                 </div>
             </div>
@@ -2420,8 +1522,8 @@
                         <div class="form-group">
                             <select class="form-control" id="service" name="service">
                                 <option value="">Select Sofa Interest</option>
-                                <option value="togo">Togo Sofa</option>
-                                <option value="sofa-cum-bed">Sofa Cum Bed</option>
+                                <option value="sofa">Transform Sofa</option>
+                                <option value="table">Compact Sofa Pro</option>
                                 <option value="custom">Custom Project</option>
                             </select>
                         </div>
@@ -2446,7 +1548,7 @@
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/woxsofa/"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="./index1.html" target="_blank"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -2455,16 +1557,15 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#space-saving">Space Saving</a></li>
                         <li><a href="#products">Sofas</a></li>
-                        <li><a href="#key-benefits">Key Benefits</a></li>
                         <li><a href="#custom">Custom Design</a></li>
-                        <li><a href="#location">Location</a></li>
+                        <li><a href="./index1.html">Location</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Our Sofas</h3>
                     <ul>
-                        <li><a href="#products">Togo Sofa</a></li>
-                        <li><a href="#products">Sofa Cum Bed</a></li>
+                        <li><a href="#products">Transform Sofa</a></li>
+                        <li><a href="#products">Compact Sofa Pro</a></li>
                         <li><a href="#custom">Custom Sofas</a></li>
                     </ul>
                 </div>
@@ -2482,55 +1583,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- WhatsApp Chat Widget -->
-    <div class="whatsapp-widget">
-        <div class="whatsapp-chat" id="whatsappChat">
-            <div class="chat-header">
-                <i class="fab fa-whatsapp"></i>
-                <div>
-                    <h4>Wox Sofa Studio</h4>
-                    <span>Typically replies within 30 minutes</span>
-                </div>
-                <button class="chat-close" id="chatClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chat-body">
-                <div class="welcome-message">
-                    👋 Hello! I'm from Wox Sofa Studio. How can I help you with your compressed sofa needs?
-                </div>
-                <div class="chat-options">
-                    <a href="https://wa.me/919447938888?text=Hi%20Wox%20Sofa%20Studio%21%20I%20would%20like%20to%20inquire%20about%20your%20Togo%20Sofa." target="_blank" class="chat-option">
-                        <i class="fas fa-couch"></i> Togo Sofa Inquiry
-                    </a>
-                    <a href="https://wa.me/919447938888?text=Hi%20Wox%20Sofa%20Studio%21%20I'm%20interested%20in%20the%20Sofa%20Cum%20Bed." target="_blank" class="chat-option">
-                        <i class="fas fa-bed"></i> Sofa Cum Bed
-                    </a>
-                    <a href="https://wa.me/919447938888?text=Hi%20Wox%20Sofa%20Studio%21%20I%20want%20to%20discuss%20a%20custom%20sofa%20project." target="_blank" class="chat-option">
-                        <i class="fas fa-palette"></i> Custom Sofa Project
-                    </a>
-                    <a href="https://wa.me/919447938888?text=Hi%20Wox%20Sofa%20Studio%21%20I%20have%20a%20question%20about%20pricing%20and%20delivery." target="_blank" class="chat-option">
-                        <i class="fas fa-rupee-sign"></i> Pricing & Delivery
-                    </a>
-                    <a href="https://wa.me/919447938888?text=Hi%20Wox%20Sofa%20Studio%21%20I%20need%20help%20with%20my%20existing%20order." target="_blank" class="chat-option">
-                        <i class="fas fa-question-circle"></i> Support & Help
-                    </a>
-                </div>
-            </div>
-            <div class="chat-footer">
-                <p>Click any option above to start chatting on WhatsApp</p>
-            </div>
-        </div>
-        
-        <a href="https://wa.me/919447938888?text=Hi%20Wox%20Sofa%20Studio%21%20I%20visited%20your%20website%20and%20would%20like%20to%20know%20more%20about%20your%20compressed%20sofas." target="_blank" class="whatsapp-cta" id="whatsappCta">
-            <i class="fab fa-whatsapp"></i> Chat with us
-        </a>
-        
-        <div class="whatsapp-button" id="whatsappButton">
-            <i class="fab fa-whatsapp"></i>
-        </div>
-    </div>
 
     <script>
         // Initialize EmailJS
@@ -2563,7 +1615,7 @@
             
             console.log('Sending form data:', formData);
             
-            // Send email to business
+            // 1. Send email to business (Contact Form Submission template)
             emailjs.send('service_b5ina3g', 'template_2720vxi', {
                 from_name: formData.name,
                 from_email: formData.email,
@@ -2577,7 +1629,7 @@
             .then(function(response) {
                 console.log('SUCCESS! Message sent to business', response.status, response.text);
                 
-                // Send auto-reply to user
+                // 2. Send auto-reply to user (Auto Reply template)
                 return emailjs.send('service_b5ina3g', 'template_t2o0w7l', {
                     to_name: formData.name,
                     to_email: formData.email,
@@ -2682,7 +1734,7 @@
 
         // Enhanced Animation on scroll
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.feature-card, .product-card, .contact-form, .fade-in, .slide-in-left, .slide-in-right, .zoom-in, .benefit-card');
+            const elements = document.querySelectorAll('.feature-card, .product-card, .contact-form, .fade-in, .slide-in-left, .slide-in-right, .zoom-in');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
@@ -2693,170 +1745,6 @@
                 }
             });
         };
-
-        // Auto-Rotating Hero Slider with 2 Products
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const progressIndicators = document.querySelectorAll('.progress-indicator');
-        const progressBars = document.querySelectorAll('.progress-bar');
-        const totalSlides = 2; // Only 2 products
-        let slideInterval;
-
-        function resetProgressBars() {
-            progressBars.forEach(bar => {
-                bar.style.transition = 'none';
-                bar.style.width = '0%';
-                // Force reflow
-                bar.offsetHeight;
-            });
-        }
-
-        function startProgressAnimation(slideIndex) {
-            const progressBar = progressBars[slideIndex];
-            progressBar.style.transition = 'width 3s linear';
-            progressBar.style.width = '100%';
-        }
-
-        function showSlide(index) {
-            // Hide all slides
-            slides.forEach(slide => {
-                slide.classList.remove('active');
-            });
-            
-            // Hide all progress indicators
-            progressIndicators.forEach(indicator => {
-                indicator.classList.remove('active');
-            });
-            
-            // Reset all progress bars
-            resetProgressBars();
-            
-            // Show new slide
-            currentSlide = index;
-            slides[currentSlide].classList.add('active');
-            progressIndicators[currentSlide].classList.add('active');
-            
-            // Start progress animation for new slide
-            startProgressAnimation(currentSlide);
-        }
-
-        function nextSlide() {
-            const nextIndex = (currentSlide + 1) % totalSlides;
-            showSlide(nextIndex);
-        }
-
-        // Start the auto-rotation
-        function startAutoRotation() {
-            // Make sure first slide is active
-            showSlide(0);
-            
-            // Clear any existing interval
-            clearInterval(slideInterval);
-            
-            // Set interval to rotate every 3.5 seconds (3s hold + 0.5s buffer)
-            slideInterval = setInterval(() => {
-                nextSlide();
-            }, 3500);
-        }
-
-        // Initialize the slider when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            // Start the rotation
-            startAutoRotation();
-        });
-
-        // Progress indicator click
-        progressIndicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                if (index < totalSlides) {
-                    clearInterval(slideInterval);
-                    showSlide(index);
-                    startAutoRotation();
-                }
-            });
-        });
-
-        // Pause on hover
-        const heroSection = document.querySelector('.hero');
-        heroSection.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
-            // Pause progress bar animation
-            if (progressBars[currentSlide]) {
-                progressBars[currentSlide].style.transition = 'none';
-            }
-        });
-        
-        heroSection.addEventListener('mouseleave', () => {
-            // Resume from where it left off
-            startAutoRotation();
-        });
-
-        // Handle window resize
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                // Restart the slider on resize to ensure proper layout
-                clearInterval(slideInterval);
-                startAutoRotation();
-            }, 250);
-        });
-
-        // WhatsApp Widget Functionality
-        const whatsappButton = document.getElementById('whatsappButton');
-        const whatsappChat = document.getElementById('whatsappChat');
-        const chatClose = document.getElementById('chatClose');
-        const whatsappCta = document.getElementById('whatsappCta');
-
-        // Toggle chat widget
-        whatsappButton.addEventListener('click', () => {
-            whatsappChat.classList.toggle('active');
-            whatsappButton.classList.toggle('active');
-            whatsappCta.classList.toggle('active');
-        });
-
-        // Close chat widget
-        chatClose.addEventListener('click', () => {
-            whatsappChat.classList.remove('active');
-            whatsappButton.classList.remove('active');
-            whatsappCta.classList.remove('active');
-        });
-
-        // Close chat when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!whatsappChat.contains(e.target) && 
-                !whatsappButton.contains(e.target) && 
-                !whatsappCta.contains(e.target)) {
-                whatsappChat.classList.remove('active');
-                whatsappButton.classList.remove('active');
-                whatsappCta.classList.remove('active');
-            }
-        });
-
-        // Auto-show chat widget after 10 seconds of page load
-        setTimeout(() => {
-            // Only show on desktop devices
-            if (window.innerWidth > 768) {
-                whatsappChat.classList.add('active');
-                whatsappButton.classList.add('active');
-                whatsappCta.classList.add('active');
-                
-                // Auto-hide after 15 seconds
-                setTimeout(() => {
-                    whatsappChat.classList.remove('active');
-                    whatsappButton.classList.remove('active');
-                    whatsappCta.classList.remove('active');
-                }, 15000);
-            }
-        }, 10000);
-
-        // Track WhatsApp clicks for analytics
-        document.querySelectorAll('.chat-option, .whatsapp-cta').forEach(link => {
-            link.addEventListener('click', function() {
-                console.log('WhatsApp link clicked:', this.href);
-                // You can add Google Analytics or other tracking here
-            });
-        });
 
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
