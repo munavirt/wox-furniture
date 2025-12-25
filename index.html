@@ -808,7 +808,103 @@
             display: block;
         }
 
-        /* Products Section */
+        /* NEW: Color Swatch Selector */
+        .swatch-selector {
+            margin: 20px 0;
+        }
+
+        .swatch-selector h4 {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .swatches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .swatch.active {
+            border-color: var(--secondary);
+            transform: scale(1.1);
+            box-shadow: 0 0 0 2px rgba(246, 185, 60, 0.3);
+        }
+
+        .swatch:hover {
+            transform: scale(1.05);
+        }
+
+        /* Tooltip for color names */
+        .swatch-tooltip {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .swatch-tooltip::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid var(--primary);
+        }
+
+        .swatch:hover .swatch-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Color swatch specific */
+        .color-swatch {
+            position: relative;
+        }
+
+        .color-swatch::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.2) 50%);
+        }
+
+        /* Product with swatches */
+        .product-card-with-swatches {
+            position: relative;
+        }
+
+        /* Updated Products Section */
         .products {
             background-color: white;
         }
@@ -831,6 +927,7 @@
             position: relative;
             max-width: 500px;
             width: 100%;
+            min-height: 550px; /* Reduced height since we removed fabric selector */
         }
 
         .product-card.animate {
@@ -842,33 +939,29 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
+        .product-img-container {
+            width: 100%;
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+        }
+
         .product-img {
-    width: 100%;
-    height: 320px; /* Change from 250px to 320px or higher */
-    object-fit: cover;
-    transition: var(--transition);
-}
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
 
-/* You might also want to adjust the .product-card height */
-.product-card {
-    background-color: white;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    transition: var(--transition);
-    opacity: 0;
-    transform: translateY(30px);
-    position: relative;
-    max-width: 500px;
-    width: 100%;
-    min-height: 520px; /* Add this to set a minimum height */
-}
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
 
-/* Adjust the product content padding if needed */
-.product-content {
-    padding: 25px;
-    min-height: 200px; /* Ensure content area has enough height */
-}
+        .product-content {
+            padding: 25px;
+            min-height: 230px; /* Adjusted height */
+        }
+
         .product-content h3 {
             font-size: 1.4rem;
             margin-bottom: 10px;
@@ -906,7 +999,21 @@
             font-weight: 500;
         }
 
-        /* Key Benefits Section - NEW */
+        /* Floating animation for visual interest */
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Key Benefits Section */
         .key-benefits {
             background-color: #f9f9f9;
             padding: 100px 0;
@@ -1731,6 +1838,26 @@
                 order: -1;
             }
             
+            /* Swatch Selector Responsive */
+            .swatches {
+                gap: 8px;
+            }
+
+            .swatch {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .swatch-tooltip {
+                font-size: 10px;
+                padding: 4px 8px;
+                bottom: -30px;
+            }
+            
+            .product-card {
+                min-height: 520px; /* Adjust for mobile */
+            }
+            
             /* WhatsApp Widget Responsive */
             .whatsapp-widget {
                 bottom: 20px;
@@ -1799,10 +1926,6 @@
             
             .benefit-card {
                 padding: 25px 15px;
-            }
-            
-            .benefit-header h3 {
-                font-size: 1.5rem;
             }
 
             .feature-card {
@@ -2143,7 +2266,7 @@
         </div>
     </section>
 
-    <!-- Products Section -->
+    <!-- Products Section with Color Swatch Selector - UPDATED -->
     <section class="products" id="products">
         <div class="container">
             <div class="section-title">
@@ -2151,27 +2274,89 @@
                 <p>Discover our range of space-saving sofas designed for modern urban living. All sofas can be customized to your exact specifications.</p>
             </div>
             <div class="products-grid">
-                <div class="product-card zoom-in">
+                <!-- Togo Sofa with Color Swatch Selector -->
+                <div class="product-card zoom-in product-card-with-swatches">
                     <div class="customizable-badge">Customizable</div>
-                    <img src="./images/hero-togo.png" alt="Togo Sofa" class="product-img">
+                    <div class="product-img-container">
+                        <img src="images/togo/moon-light-cream-togo.png" alt="Togo Sofa" class="product-img" id="togoSofaImg">
+                    </div>
                     <div class="product-content">
                         <h3>Togo</h3>
                         <p>Compresses to 1/3 of its size for storage. Expands to comfortable seating in seconds. Customize size, fabric, and color.</p>
+                        
+                        <!-- Color Swatch Selector for Togo -->
+                        <div class="swatch-selector">
+                            <h4>Choose Color: <span id="togoColorName">Moonlight Cream</span></h4>
+                            <div class="swatches">
+                                <div class="swatch color-swatch active" data-color="moonlight-cream" data-color-name="Moonlight Cream" data-product="togo" style="background-color: #e4e5de;" onclick="selectColor('togo', 'moonlight-cream', 'Moonlight Cream')">
+                                    <div class="swatch-tooltip">Moonlight Cream</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="slate-blue" data-color-name="Slate Blue" data-product="togo" style="background-color: #495367;" onclick="selectColor('togo', 'slate-blue', 'Slate Blue')">
+                                    <div class="swatch-tooltip">Slate Blue</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="mocha-brown" data-color-name="Mocha Brown" data-product="togo" style="background-color: #3b291c;" onclick="selectColor('togo', 'mocha-brown', 'Mocha Brown')">
+                                    <div class="swatch-tooltip">Mocha Brown</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="charcoal-grey" data-color-name="Charcoal Grey" data-product="togo" style="background-color: #292e38;" onclick="selectColor('togo', 'charcoal-grey', 'Charcoal Grey')">
+                                    <div class="swatch-tooltip">Charcoal Grey</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="burgundy-red" data-color-name="Burgundy Red" data-product="togo" style="background-color: #830014;" onclick="selectColor('togo', 'burgundy-red', 'Burgundy Red')">
+                                    <div class="swatch-tooltip">Burgundy Red</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="taupe" data-color-name="Taupe" data-product="togo" style="background-color: #5f544c;" onclick="selectColor('togo', 'taupe', 'Taupe')">
+                                    <div class="swatch-tooltip">Taupe</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="espresso" data-color-name="Espresso" data-product="togo" style="background-color: #5c4a41;" onclick="selectColor('togo', 'espresso', 'Espresso')">
+                                    <div class="swatch-tooltip">Espresso</div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="product-price">
-                            <span class="price">From ₹14500</span>
-                            <a href="#contact" class="btn">Customize</a>
+                            <span class="price">From ₹14,500</span>
+                            <a href="#" class="btn" onclick="customizeTogo(event)">BUY NOW</a>
                         </div>
                     </div>
                 </div>
-                <div class="product-card zoom-in">
+                
+                <!-- Sofa Cum Bed with Color Swatch Selector -->
+                <div class="product-card zoom-in product-card-with-swatches">
                     <div class="customizable-badge">Customizable</div>
-                    <img src="./images/hero-sofa-cum-bed.png" alt="Sofa Cum Bed" class="product-img">
+                    <div class="product-img-container">
+                        <img src="./images/sofa-bed/sofa-bed-sky-blue.png" alt="Sofa Cum Bed" class="product-img" id="sofaBedImg">
+                    </div>
                     <div class="product-content">
                         <h3>Sofa Cum Bed</h3>
                         <p>A sleek, ultra-thin sofa that transforms into a comfortable bed within seconds. Designed for compact apartments, studios, and multi-use rooms.</p>
+                        
+                        <!-- Color Swatch Selector for Sofa Cum Bed -->
+                        <div class="swatch-selector">
+                            <h4>Choose Color: <span id="sofaBedColorName">Sky Blue</span></h4>
+                            <div class="swatches">
+                                <div class="swatch color-swatch active" data-color="sky-blue" data-color-name="Sky Blue" data-product="sofa-bed" style="background-color: #61bfeb;" onclick="selectColor('sofa-bed', 'sky-blue', 'Sky Blue')">
+                                    <div class="swatch-tooltip">Sky Blue</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="sage-green" data-color-name="Sage Green" data-product="sofa-bed" style="background-color: #84936c;" onclick="selectColor('sofa-bed', 'sage-green', 'Sage Green')">
+                                    <div class="swatch-tooltip">Sage Green</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="terracotta" data-color-name="Terracotta" data-product="sofa-bed" style="background-color: #d38372;" onclick="selectColor('sofa-bed', 'terracotta', 'Terracotta')">
+                                    <div class="swatch-tooltip">Terracotta</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="warm-grey" data-color-name="Warm Grey" data-product="sofa-bed" style="background-color: #b0a099;" onclick="selectColor('sofa-bed', 'warm-grey', 'Warm Grey')">
+                                    <div class="swatch-tooltip">Warm Grey</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="stone-grey" data-color-name="Stone Grey" data-product="sofa-bed" style="background-color: #5a564f;" onclick="selectColor('sofa-bed', 'stone-grey', 'Stone Grey')">
+                                    <div class="swatch-tooltip">Stone Grey</div>
+                                </div>
+                                <div class="swatch color-swatch" data-color="driftwood" data-color-name="Driftwood" data-product="sofa-bed" style="background-color: #8d725d;" onclick="selectColor('sofa-bed', 'driftwood', 'Driftwood')">
+                                    <div class="swatch-tooltip">Driftwood</div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="product-price">
-                            <span class="price">From ₹24500</span>
-                            <a href="#contact" class="btn">Customize</a>
+                            <span class="price">From ₹24,500</span>
+                            <a href="#" class="btn" onclick="customizeSofaBed(event)">BUY NOW</a>
                         </div>
                     </div>
                 </div>
@@ -2179,7 +2364,7 @@
         </div>
     </section>
 
-    <!-- Key Benefits Section - NEW -->
+    <!-- Key Benefits Section -->
     <section class="key-benefits" id="key-benefits">
         <div class="container">
             <div class="section-title">
@@ -2210,7 +2395,7 @@
                         </div>
                         <div class="benefit-feature">
                             <i class="fas fa-palette"></i>
-                            <span>Custom fabrics, colors & sizes available to match your décor</span>
+                            <span>7 premium color options available to match your décor</span>
                         </div>
                     </div>
                     
@@ -2229,7 +2414,7 @@
                     <div class="benefit-features">
                         <div class="benefit-feature">
                             <i class="fas fa-home"></i>
-                            <span>Minimal footprint, maximum comfort design for small spaces</span>
+                            <span>Minimal footprint, maximum comfort design for <br>small spaces</span>
                         </div>
                         <div class="benefit-feature">
                             <i class="fas fa-bed"></i>
@@ -2237,11 +2422,11 @@
                         </div>
                         <div class="benefit-feature">
                             <i class="fas fa-layer-group"></i>
-                            <span>Premium upholstery with breathable, durable fabric options</span>
+                            <span>Premium upholstery with breathable,<br>durable fabric</span>
                         </div>
                         <div class="benefit-feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Stable seating transforms seamlessly to restful sleeping surface</span>
+                            <i class="fas fa-palette"></i>
+                            <span>6 elegant color choices to suit any interior style</span>
                         </div>
                     </div>
                     
@@ -2268,7 +2453,7 @@
                         </div>
                         <div class="custom-feature">
                             <i class="fas fa-palette"></i>
-                            <span>Choice of materials, colors, and finishes</span>
+                            <span>Choice of premium colors and finishes</span>
                         </div>
                         <div class="custom-feature">
                             <i class="fas fa-cogs"></i>
@@ -2856,6 +3041,124 @@
                 // You can add Google Analytics or other tracking here
             });
         });
+
+        // Color selection functionality
+        let selectedTogoColor = 'moonlight-cream';
+        let selectedTogoColorName = 'Moonlight Cream';
+        let selectedSofaBedColor = 'sky-blue';
+        let selectedSofaBedColorName = 'Sky Blue';
+
+        
+        // Updated selectColor function with image changing
+function selectColor(productType, color, colorName) {
+    if (productType === 'togo') {
+        selectedTogoColor = color;
+        selectedTogoColorName = colorName;
+        
+        // Update color name display
+        document.getElementById('togoColorName').textContent = colorName;
+        
+        // Update active swatch
+        const swatches = document.querySelectorAll(`[data-product="togo"]`);
+        swatches.forEach(swatch => {
+            swatch.classList.remove('active');
+            if (swatch.getAttribute('data-color') === color) {
+                swatch.classList.add('active');
+            }
+        });
+        
+        // Define image URLs for each color
+        const togoImages = {
+            'moonlight-cream': './images/togo/moon-light-cream-togo.png',
+            'slate-blue': './images/togo/togo-slate-blue.png',
+            'mocha-brown': './images/togo/togo-mocha-brown.png',
+            'charcoal-grey': './images/togo/togo-charcoal-grey.png',
+            'burgundy-red': './images/togo/togo-red.png',
+            'taupe': './images/togo/togo-taupe.png',
+            'espresso': './images/togo/togo-espresso.png'
+        };
+        
+        // Update image with fade effect
+        const imageElement = document.getElementById('togoSofaImg');
+        imageElement.style.opacity = '0';
+        setTimeout(() => {
+            if (togoImages[color]) {
+                imageElement.src = togoImages[color];
+            }
+            imageElement.style.opacity = '1';
+        }, 300);
+        
+        // Add animation effect
+        imageElement.classList.add('float-animation');
+        setTimeout(() => {
+            imageElement.classList.remove('float-animation');
+        }, 600);
+    } else if (productType === 'sofa-bed') {
+        selectedSofaBedColor = color;
+        selectedSofaBedColorName = colorName;
+        
+        // Update color name display
+        document.getElementById('sofaBedColorName').textContent = colorName;
+        
+        // Update active swatch
+        const swatches = document.querySelectorAll(`[data-product="sofa-bed"]`);
+        swatches.forEach(swatch => {
+            swatch.classList.remove('active');
+            if (swatch.getAttribute('data-color') === color) {
+                swatch.classList.add('active');
+            }
+        });
+        
+        // Define image URLs for each color
+        const sofaBedImages = {
+            'sky-blue': './images/sofa-bed/sofa-bed-sky-blue.png',
+            'sage-green': './images/sofa-bed/sofa-bed-sage-green.png',
+            'terracotta': './images/sofa-bed/sofa-bed-terracotta.png',
+            'warm-grey': './images/sofa-bed/sofa-bed-warm-grey.png',
+            'stone-grey': './images/sofa-bed/sofa-bed-stone-grey.png',
+            'driftwood': './images/sofa-bed/sofa-bed-driftwood.png'
+        };
+        
+        // Update image with fade effect
+        const imageElement = document.getElementById('sofaBedImg');
+        imageElement.style.opacity = '0';
+        setTimeout(() => {
+            if (sofaBedImages[color]) {
+                imageElement.src = sofaBedImages[color];
+            }
+            imageElement.style.opacity = '1';
+        }, 300);
+        
+        // Add animation effect
+        imageElement.classList.add('float-animation');
+        setTimeout(() => {
+            imageElement.classList.remove('float-animation');
+        }, 600);
+    }
+    
+    // Update contact form
+    const contactForm = document.getElementById('service');
+    if (productType === 'togo') {
+        contactForm.value = 'togo';
+    } else if (productType === 'sofa-bed') {
+        contactForm.value = 'sofa-cum-bed';
+    }
+}
+        // Customize Togo function - redirect to WhatsApp
+        function customizeTogo(event) {
+            event.preventDefault();
+            const message = `Hi Wox Sofa Studio! I'm interested in the Togo Sofa in ${selectedTogoColorName} color. Can you provide more details about customization options?`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/919447938888?text=${encodedMessage}`, '_blank');
+        }
+
+        // Customize Sofa Bed function - redirect to WhatsApp
+        function customizeSofaBed(event) {
+            event.preventDefault();
+            const message = `Hi Wox Sofa Studio! I'm interested in the Sofa Cum Bed in ${selectedSofaBedColorName} color. Can you provide more details about customization options?`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/919447938888?text=${encodedMessage}`, '_blank');
+        }
 
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
